@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.Date;
 import com.cognizant.truyum.model.MenuItem;
 import com.cognizant.truyum.repository.MenuItemRepository;
 @Service
@@ -40,7 +40,7 @@ public class MenuItemService {
 	public List<MenuItem> getMenuItemListCustomer()
 	{
 		LOGGER.info("Start");
-	 return menuItemRepository.findByActiveItems();
+	 return menuItemRepository.findByActiveAndDateOfLaunchBefore(true, new Date());
 	}
 	
 	@Transactional
